@@ -520,7 +520,7 @@ stories:
   - slot_was_set:
     - location: Mumbai
   - slot_was_set:
-    - restaurant_exist: false
+    - restaurant_exist: true
   - action: utter_ask_needemail
   - intent: deny
   - action: utter_goodbye
@@ -560,7 +560,7 @@ stories:
   - slot_was_set:
     - location: Pune
   - slot_was_set:
-    - restaurant_exist: false
+    - restaurant_exist: true
   - action: utter_ask_needemail
   - intent: affirm
   - action: utter_ask_email
@@ -663,7 +663,7 @@ stories:
   - slot_was_set:
     - location: pune
   - slot_was_set:
-    - restaurant_exist: false
+    - restaurant_exist: true
   - action: utter_ask_needemail
   - intent: affirm
   - action: utter_ask_email
@@ -676,6 +676,576 @@ stories:
   - slot_was_set:
     - email_ok: true
   - action: action_send_mail
+  - intent: thankyou
+  - action: utter_noworries
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - cuisine: chinese
+    - location: Delhi
+  - slot_was_set:
+    - cuisine: chinese
+  - slot_was_set:
+    - location: Delhi
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Delhi
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 300
+  - slot_was_set:
+    - budgetmax: 700
+  - slot_was_set:
+    - budget_ok: true
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: Delhi
+  - slot_was_set:
+    - restaurant_exist: false
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: Agra
+  - slot_was_set:
+    - location: Agra
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Agra
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 300
+  - slot_was_set:
+    - budgetmax: 700
+  - slot_was_set:
+    - budget_ok: true
+  - action: utter_ask_email
+  - intent: send_email
+    entities:
+    - email: mayankmkl@gmail.com
+  - slot_was_set:
+    - email: mayankmkl@gmail.com
+  - action: action_validate_email
+  - slot_was_set:
+    - email_ok: true
+  - action: action_send_mail
+  - intent: affirm
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: ahemdabad
+  - slot_was_set:
+    - location: ahemdabad
+  - action: action_validate_location
+  - slot_was_set:
+    - location: null
+  - slot_was_set:
+    - location_ok: false
+  - action: utter_ask_location
+  - intent: restaurant_search
+    entities:
+    - location: Ahmedabad
+  - slot_was_set:
+    - location: Ahmedabad
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Ahmedabad
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: utter_ask_cuisine
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: South Indian
+  - slot_was_set:
+    - cuisine: South Indian
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: Ahmedabad
+  - slot_was_set:
+    - restaurant_exist: false
+  - action: utter_ask_needemail
+  - intent: affirm
+  - action: utter_ask_email
+  - intent: send_email
+    entities:
+    - email: gaurav.chopra13@gmail.com
+  - slot_was_set:
+    - email: gaurav.chopra13@gmail.com
+  - action: action_validate_email
+  - slot_was_set:
+    - email_ok: true
+  - action: action_send_mail
+  - intent: affirm
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+  - action: utter_ask_location
+  - intent: affirm
+    entities:
+    - location: Bangalore
+  - slot_was_set:
+    - location: Bangalore
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Bangalore
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: Thai
+  - slot_was_set:
+    - cuisine: Thai
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 300
+  - slot_was_set:
+    - budgetmax: 700
+  - slot_was_set:
+    - budget_ok: true
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: Bangalore
+  - slot_was_set:
+    - restaurant_exist: false
+  - intent: affirm
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: Rishikesh
+  - slot_was_set:
+    - location: Rishikesh
+  - action: action_validate_location
+  - slot_was_set:
+    - location: null
+  - slot_was_set:
+    - location_ok: false
+  - action: utter_ask_location
+  - intent: restaurant_search
+    entities:
+    - location: Allahabad
+  - slot_was_set:
+    - location: Allahabad
+  - action: action_validate_location
+  - slot_was_set:
+    - location: null
+  - slot_was_set:
+    - location_ok: false
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: utter_ask_budget_for_two
+  - intent: budget
+    entities:
+    - budgetmin: '700'
+  - slot_was_set:
+    - budgetmin: '700'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 700
+  - slot_was_set:
+    - budgetmax: 10000
+  - slot_was_set:
+    - budget_ok: true
+  - action: utter_ask_location
+  - intent: restaurant_search
+    entities:
+    - location: Allahabad
+  - slot_was_set:
+    - location: Allahabad
+  - action: action_validate_location
+  - slot_was_set:
+    - location: null
+  - slot_was_set:
+    - location_ok: false
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: null
+  - slot_was_set:
+    - restaurant_exist: false
+  - action: utter_ask_needemail
+  - intent: affirm
+  - action: utter_goodbye
+  - intent: goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: delhi
+  - slot_was_set:
+    - location: delhi
+  - action: action_validate_location
+  - slot_was_set:
+    - location: delhi
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 300
+  - slot_was_set:
+    - budgetmax: 700
+  - slot_was_set:
+    - budget_ok: true
+  - action: utter_ask_cuisine
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: Italian
+  - slot_was_set:
+    - cuisine: Italian
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: delhi
+  - slot_was_set:
+    - restaurant_exist: false
+  - action: action_restart
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: Delhi
+  - slot_was_set:
+    - location: Delhi
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Delhi
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 300
+  - slot_was_set:
+    - budgetmax: 700
+  - slot_was_set:
+    - budget_ok: true
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: Delhi
+  - slot_was_set:
+    - restaurant_exist: false
+  - intent: thankyou
+  - action: utter_noworries
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: America
+  - slot_was_set:
+    - location: America
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: Italian
+  - slot_was_set:
+    - cuisine: Italian
+  - action: action_validate_location
+  - slot_was_set:
+    - location: null
+  - slot_was_set:
+    - location_ok: false
+  - action: utter_ask_location
+  - intent: restaurant_search
+    entities:
+    - location: pune
+  - slot_was_set:
+    - location: pune
+  - action: action_validate_location
+  - slot_was_set:
+    - location: pune
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: utter_ask_cuisine
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: South Indian
+  - slot_was_set:
+    - cuisine: South Indian
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: pune
+  - slot_was_set:
+    - restaurant_exist: false
+  - intent: affirm
+  - action: utter_goodbye
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: Mumbai
+  - slot_was_set:
+    - location: Mumbai
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Mumbai
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: Mexican
+  - slot_was_set:
+    - cuisine: Mexican
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 300
+  - slot_was_set:
+    - budgetmax: 700
+  - slot_was_set:
+    - budget_ok: true
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: Mumbai
+  - slot_was_set:
+    - restaurant_exist: false
+  - action: utter_goodbye
+  - intent: restaurant_search
+    entities:
+    - location: Pune
+  - slot_was_set:
+    - location: Pune
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Pune
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: South Indian
+  - slot_was_set:
+    - cuisine: South Indian
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '0'
+    - budgetmax: '300'
+  - slot_was_set:
+    - budgetmax: '300'
+  - slot_was_set:
+    - budgetmin: '0'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 0
+  - slot_was_set:
+    - budgetmax: 300
+  - slot_was_set:
+    - budget_ok: true
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: Pune
+  - slot_was_set:
+    - restaurant_exist: false
+  - intent: affirm
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_2
+  steps:
+  - intent: restaurant_search
+    entities:
+    - location: Delhi
+  - slot_was_set:
+    - location: Delhi
+  - action: action_validate_location
+  - slot_was_set:
+    - location: Delhi
+  - slot_was_set:
+    - location_ok: true
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: North Indian
+  - slot_was_set:
+    - cuisine: North Indian
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - slot_was_set:
+    - budgetmin: 300
+  - slot_was_set:
+    - budgetmax: 700
+  - slot_was_set:
+    - budget_ok: true
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: Delhi
+  - slot_was_set:
+    - restaurant_exist: false
+  - intent: thankyou
+  - action: utter_noworries
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+  - action: utter_ask_location
+  - intent: restaurant_search
+    entities:
+    - location: pune
+  - slot_was_set:
+    - location: pune
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: North Indian
+  - slot_was_set:
+    - cuisine: North Indian
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: pune
+  - slot_was_set:
+    - restaurant_exist: false
   - intent: thankyou
   - action: utter_noworries
   - action: action_restart
