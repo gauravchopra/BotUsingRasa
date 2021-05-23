@@ -1,13 +1,20 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-- affirm
-- restaurant_search
+- send_email
 - greet
-- help
-- goodbye
 - thankyou
+- restaurant_search
+- deny
+- affirm
+- goodbye
+- help
 - out_of_scope
 - stop
 - inform
+- people
 - ask_weather
 - ask_builder
 - ask_howdoing
@@ -20,38 +27,55 @@ intents:
 - telljoke
 - ask_whatismyname
 - ask_languagesbot
-
+- budget
 entities:
-- cuisine
-- location
 - budgetmax
 - budgetmin
-- people
+- cuisine
 - email
-
+- location
+- people
 slots:
   cuisine:
     type: text
+    influence_conversation: true
   location:
     type: text
+    influence_conversation: true
   email:
     type: text
+    influence_conversation: true
   budget_ok:
-    initial_value: false
     type: bool
+    initial_value: false
+    influence_conversation: true
   budgetmax:
+    type: float
     initial_value: 10000.0
+    influence_conversation: true
     max_value: 10000.0
     min_value: 0.0
-    type: float
   budgetmin:
+    type: float
     initial_value: 0.0
+    influence_conversation: true
     max_value: 1.0
     min_value: 0.0
-    type: float
   people:
     type: text
-
+    influence_conversation: true
+  email_ok:
+    type: bool
+    initial_value: false
+    influence_conversation: true
+  location_ok:
+    type: bool
+    initial_value: false
+    influence_conversation: true
+  restaurant_exist:
+    type: bool
+    initial_value: false
+    influence_conversation: true
 responses:
   utter_ask_cuisine:
   - buttons:
@@ -67,24 +91,22 @@ responses:
       title: Mexican
     - payload: American
       title: American
-    - payload: Thai
-      title: Thai
     text: what kind of cuisine would you like?
   utter_ask_budget_for_two:
-    - buttons:
-      - payload: /restaurant_search{"budgetmin":"0","budgetmax":"300"}
-        title: Less than Rs. 300
-      - payload: /restaurant_search{"budgetmin":"300","budgetmax":"700"}
-        title: Rs. 300 to 700
-      - payload: /restaurant_search{"budgetmin":"700","budgetmax":"10000"}
-        title: More than 700
+  - buttons:
+    - payload: /restaurant_search{{"budgetmin":"0","budgetmax":"300"}}
+      title: Less than Rs. 300
+    - payload: /restaurant_search{{"budgetmin":"300","budgetmax":"700"}}
+      title: Rs. 300 to 700
+    - payload: /restaurant_search{{"budgetmin":"700","budgetmax":"10000"}}
+      title: More than 700
     text: What price range are you looking at?
   utter_ask_needemail:
-    - buttons:
-      - payload: Yes
-        title: Yes
-      - payload: No
-        title: No
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
     text: Shall I send you the top 10 search results via email?
   utter_ask_howcanhelp:
   - text: how can I help you?
@@ -118,8 +140,6 @@ responses:
   utter_ask_min_budget:
   - text: What is your minimum budget?
   - text: Please tell me your minimum budget?
-  utter_confirm_email:
-  - text: Email id is valid.
   utter_continue:
   - text: Do you want to continue the restaurant facility search?
   - text: You are going off topic. Are you still looking for a restaurant?
@@ -158,39 +178,40 @@ responses:
   - text: I'm good, thanks!
   - text: A little bit too warm, otherwise fine.
   utter_people:
-    - buttons:
-      - payload: <=2
-        title: single or double
-      - payload: ''
-        title: more than 2
-      text: How many people are there ?
-
+  - buttons:
+    - payload: <=2
+      title: single or double
+    - payload: ''
+      title: more than 2
+    text: How many people are there ?
 actions:
+- action_chitchat
 - action_search_restaurants
 - action_send_mail
-- utter_ask_cuisine
-- utter_ask_howcanhelp
-- utter_ask_location
+- action_validate_budget
+- action_validate_email
+- action_validate_location
 - utter_ask_budget_for_two
-- utter_ask_min_budget
-- utter_ask_max_budget
-- utter_ask_needemail
+- utter_ask_builder
+- utter_ask_cuisine
 - utter_ask_email
-- utter_confirm_email
-- utter_email_sent
+- utter_ask_howcanhelp
+- utter_ask_howdoing
+- utter_ask_howold
+- utter_ask_languagesbot
+- utter_ask_location
+- utter_ask_max_budget
+- utter_ask_min_budget
+- utter_ask_needemail
+- utter_ask_time
+- utter_ask_weather
+- utter_ask_whatismyname
+- utter_ask_wherefrom
+- utter_ask_whoami
+- utter_continue
 - utter_default
 - utter_goodbye
 - utter_greet
-- utter_continue
-- utter_ask_weather
-- utter_ask_builder
-- utter_ask_howdoing
-- utter_ask_howold
-- utter_ask_time
-- utter_ask_wherefrom
-- utter_ask_whoami
 - utter_handleinsult
+- utter_noworries
 - utter_telljoke
-- utter_ask_whatismyname
-- utter_ask_languagesbot
-- action_chitchat

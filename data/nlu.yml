@@ -257,6 +257,14 @@ nlu:
     - I’ll prefer [chines]{"entity": "cuisine", "value": "chinese"}
     - need some resturants in [delhi](location)
     - find me resturants in [Dilli]{"entity": "location", "value": "Delhi"}
+    - need some restuarants in [America](location)
+    - [pune](location)
+    - need some resturants in [Mumbai](location)
+    - [Mexican](cuisine)
+    - hey, i need a resturant in [Pune](location)
+    - [South Indian](cuisine)
+    - hey need a place in [dilli]{"entity": "location", "value": "Delhi"}
+    - [North Indian](cuisine)
 - intent: help
   examples: |
     - help
@@ -279,12 +287,6 @@ nlu:
     - help pls
     - help?
     - hep me
-- intent: people
-  examples: |
-    - [<=2](people)
-    - [>2] {"entity": "people" , "value": ">2"}
-    - ["<=2"](people)
-    - [">2"](people)
 - intent: thankyou
   examples: |
     - thank you goodbye
@@ -350,6 +352,7 @@ nlu:
     - noope
     - do you have something else
     - no this does not work for me
+    - No
 - intent: ask_howdoing
   examples: |
     - Ahoy matey how are you?
@@ -1014,6 +1017,7 @@ nlu:
     - send to [abcd_1234-email@abc123.com](email)
     - this is my email address [abc_123@abc.com.edu](email) send me an email.
     - yes please send it on [mayank.sharma@rbs.com](email)
+    - [gaurav.chopra13@gmail.com](email)
 - intent: budget
   examples: |
     - [>700]{"entity": "budgetmin", "value": "700"}
