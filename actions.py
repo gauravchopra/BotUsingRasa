@@ -18,11 +18,26 @@ ZomatoData = pd.read_csv('zomato.csv', encoding='latin1')
 ZomatoData = ZomatoData.drop_duplicates().reset_index(drop=True)
 top_restaurant_details = []
 
-WeOperate = ['New Delhi', 'Gurgaon', 'Noida', 'Faridabad', 'Allahabad', 'Bhubaneshwar', 'Mangalore', 'Mumbai', 'Ranchi',
-             'Patna', 'Mysore', 'Aurangabad', 'Amritsar', 'Puducherry', 'Varanasi', 'Nagpur', 'Vadodara', 'Dehradun',
-             'Vizag', 'Agra', 'Ludhiana', 'Kanpur', 'Lucknow', 'Surat', 'Kochi', 'Indore', 'Ahmedabad', 'Coimbatore',
-             'Chennai', 'Guwahati', 'Jaipur', 'Hyderabad', 'Bangalore', 'Nashik', 'Pune', 'Kolkata', 'Bhopal', 'Goa',
-             'Chandigarh', 'Ghaziabad', 'Ooty', 'Gangtok', 'Shimla']
+operational_cities = ['ahmedabad', 'bangalore', 'chennai', 'delhi', 'hyderabad', 'kolkata', 'mumbai', 'pune','agra', 'ajmer', 'aligarh', 'amravati', 'amritsar', 'asansol', 'aurangabad', 'bareilly',
+                       'belgaum',
+                       'bhavnagar', 'bhiwandi', 'bhopal', 'bhubaneswar', 'bikaner', 'bilaspur', 'bokaro steel city',
+                       'chandigarh',
+                       'coimbatore', 'cuttack', 'dehradun', 'dhanbad', 'bhilai', 'durgapur', 'erode', 'faridabad',
+                       'firozabad',
+                       'ghaziabad', 'gorakhpur', 'gulbarga', 'guntur', 'gwalior', 'gurgaon', 'guwahati', 'hamirpur',
+                       'hubli–dharwad',
+                       'indore', 'jabalpur', 'jaipur', 'jalandhar', 'jammu', 'jamnagar', 'jamshedpur', 'jhansi',
+                       'jodhpur',
+                       'kakinada', 'kannur', 'kanpur', 'kochi', 'kolhapur', 'kollam', 'kozhikode', 'kurnool',
+                       'ludhiana', 'lucknow',
+                       'madurai', 'malappuram', 'mathura', 'goa', 'mangalore', 'meerut', 'moradabad', 'mysore',
+                       'nagpur', 'nanded',
+                       'nashik', 'nellore', 'noida', 'patna', 'pondicherry', 'purulia', 'prayagraj', 'raipur', 'rajkot',
+                       'rajahmundry', 'ranchi', 'rourkela', 'salem', 'sangli', 'shimla', 'siliguri', 'solapur',
+                       'srinagar', 'surat',
+                       'thiruvananthapuram', 'thrissur', 'tiruchirappalli', 'tiruppur', 'ujjain', 'bijapur', 'vadodara',
+                       'varanasi',
+                       'vasai-virar city', 'vijayawada', 'visakhapatnam', 'vellore', 'warangal']
 
 
 def RestaurantSearch(City, Cuisine):
@@ -32,7 +47,7 @@ def RestaurantSearch(City, Cuisine):
 
 
 def validate_location(loc):
-    return loc.lower() in WeOperate
+    return loc.lower() in operational_cities
 
 
 class ActionSearchRestaurants(Action):
@@ -173,31 +188,6 @@ def send_email(recipient, top_10_restaurant_df):
 
 
 class ActionValidateLocation(Action):
-    TIER_1 = []
-    TIER_2 = []
-
-    def __init__(self):
-        self.TIER_1 = ['ahmedabad', 'bangalore', 'chennai', 'delhi', 'hyderabad', 'kolkata', 'mumbai', 'pune']
-        self.TIER_2 = ['agra', 'ajmer', 'aligarh', 'amravati', 'amritsar', 'asansol', 'aurangabad', 'bareilly',
-                       'belgaum',
-                       'bhavnagar', 'bhiwandi', 'bhopal', 'bhubaneswar', 'bikaner', 'bilaspur', 'bokaro steel city',
-                       'chandigarh',
-                       'coimbatore', 'cuttack', 'dehradun', 'dhanbad', 'bhilai', 'durgapur', 'erode', 'faridabad',
-                       'firozabad',
-                       'ghaziabad', 'gorakhpur', 'gulbarga', 'guntur', 'gwalior', 'gurgaon', 'guwahati', 'hamirpur',
-                       'hubli–dharwad',
-                       'indore', 'jabalpur', 'jaipur', 'jalandhar', 'jammu', 'jamnagar', 'jamshedpur', 'jhansi',
-                       'jodhpur',
-                       'kakinada', 'kannur', 'kanpur', 'kochi', 'kolhapur', 'kollam', 'kozhikode', 'kurnool',
-                       'ludhiana', 'lucknow',
-                       'madurai', 'malappuram', 'mathura', 'goa', 'mangalore', 'meerut', 'moradabad', 'mysore',
-                       'nagpur', 'nanded',
-                       'nashik', 'nellore', 'noida', 'patna', 'pondicherry', 'purulia', 'prayagraj', 'raipur', 'rajkot',
-                       'rajahmundry', 'ranchi', 'rourkela', 'salem', 'sangli', 'shimla', 'siliguri', 'solapur',
-                       'srinagar', 'surat',
-                       'thiruvananthapuram', 'thrissur', 'tiruchirappalli', 'tiruppur', 'ujjain', 'bijapur', 'vadodara',
-                       'varanasi',
-                       'vasai-virar city', 'vijayawada', 'visakhapatnam', 'vellore', 'warangal']
 
     def name(self):
         return "action_validate_location"
@@ -205,14 +195,11 @@ class ActionValidateLocation(Action):
     def run(self, dispatcher, tracker, domain):
         loc = tracker.get_slot('location')
 
-        if not (self.validate_location(loc)):
+        if not (validate_location(loc)):
             dispatcher.utter_message("Sorry, we do not operate in " + loc + " yet. Please try some other city.")
             return [SlotSet('location', None), SlotSet("location_ok", False)]
         else:
             return [SlotSet('location', loc), SlotSet("location_ok", True)]
-
-    def validate_location(self, loc):
-        return loc.lower() in self.TIER_1 or loc.lower() in self.TIER_2
 
 
 class ActionSendMail(Action):
