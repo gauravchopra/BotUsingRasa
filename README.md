@@ -1,5 +1,32 @@
 # BotUsingRasa
-Note - This model is based on the RASA 2.x fraemwork and uses training data in the form of YAML files.
+Note - This model is based on the RASA 2.x framework and uses training data in the form of YAML files.
+
+Apart from restaurant search feature, out bot also handles chitchat conversations, for instance, 
+the following conservation can be carried out with our bot:
+
+> User: Hi
+> 
+> Bot: Hi, How can I help you!
+>
+> User: please tell me who created you
+>
+> Bot : The engineers enrolled at Upgrad - Gaurav & Mayank! 🛠
+
+Following versions are used:
+
+>Python version - 3.7.9
+> 
+>rasa==2.6.0
+> 
+>rasa-sdk==2.6.0
+> 
+>Flask==2.0.1
+> 
+>Flask-Mail==0.9.1
+> 
+>spacy==3.0.6
+> 
+>spacy-legacy==3.0.5
 
 
 An Indian startup named 'Foodie' wants to build a conversational bot (chatbot) which can help users discover restaurants across several Indian cities. You have been hired as the lead data scientist for creating this product.

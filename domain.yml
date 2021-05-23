@@ -171,7 +171,7 @@ responses:
   - text: Blue skies and sun shine!
   - text: Let's just say it hasn't rained in weeks ☀️
   utter_ask_builder:
-  - text: The engineers enrolled at Upgrad 🛠
+  - text: The engineers enrolled at Upgrad - Gaurav & Mayank! 🛠
   - text: Smart engineers - Gaurav & Mayank! 🧠
   utter_ask_howdoing:
   - text: I'm great! Thanks for asking.
