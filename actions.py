@@ -78,7 +78,7 @@ class ActionSearchRestaurants(Action):
 
             for restaurant in results.iloc[:5].iterrows():
                 restaurant = restaurant[1]
-                response = response + F"Found {restaurant['Restaurant Name']} in {restaurant['Address']} rated {restaurant['Address']} with avg cost {restaurant['Average Cost for two']} \n\n"
+                response = response + F"Found {restaurant['Restaurant Name']} in {restaurant['Address']} rated {restaurant['Aggregate rating']} with avg cost {restaurant['Average Cost for two']} \n\n"
 
             dispatcher.utter_message("Top 5 Restaurant : " + "\n" + response)
             global top_restaurant_details
