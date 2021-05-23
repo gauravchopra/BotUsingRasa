@@ -144,6 +144,7 @@ nlu:
     - hi there it's me
     - good afternoon
     - Heyy
+    - hola
 - intent: restaurant_search
   examples: |
     - i'm looking for a place to eat
@@ -262,8 +263,9 @@ nlu:
     - need some resturants in [Mumbai](location)
     - [Mexican](cuisine)
     - hey, i need a resturant in [Pune](location)
-    - [South Indian](cuisine)
     - hey need a place in [dilli]{"entity": "location", "value": "Delhi"}
+    - I m hungry.Looking out for some good restaurants
+    - [pune](location)
     - [North Indian](cuisine)
 - intent: help
   examples: |
@@ -1017,7 +1019,7 @@ nlu:
     - send to [abcd_1234-email@abc123.com](email)
     - this is my email address [abc_123@abc.com.edu](email) send me an email.
     - yes please send it on [mayank.sharma@rbs.com](email)
-    - [gaurav.chopra13@gmail.com](email)
+    - [gaurav@rbs.com](email)
 - intent: budget
   examples: |
     - [>700]{"entity": "budgetmin", "value": "700"}
@@ -1031,6 +1033,7 @@ nlu:
   examples: |
     - New Delhi
     - Dilli
+    - dilli
     - New Dili
     - New Dilli
     - Old Delhi

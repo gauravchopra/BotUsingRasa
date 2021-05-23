@@ -1,4 +1,6 @@
 # BotUsingRasa
+Note - This model is based on the RASA 2.x fraemwork and uses training data in the form of YAML files.
+
 
 An Indian startup named 'Foodie' wants to build a conversational bot (chatbot) which can help users discover restaurants across several Indian cities. You have been hired as the lead data scientist for creating this product.
 

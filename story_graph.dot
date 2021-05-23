@@ -4,20 +4,12 @@ digraph  {
 1 [class=active, fontsize=12, label=action_session_start];
 2 [class="", fontsize=12, label=utter_greet];
 "-3" [class=ellipsis, label="..."];
-4 [class="", fontsize=12, label=action_validate_location];
-5 [class="", fontsize=12, label=utter_ask_cuisine];
-"-4" [class=ellipsis, label="..."];
-7 [class="intent dashed active", label="  ?  ", shape=rect];
-8 [class=intent, fillcolor=lightblue, label=hello, shape=rect, style=filled];
-9 [class=intent, fillcolor=lightblue, label="hey need a place in dilli", shape=rect, style=filled];
+4 [class="intent dashed active", label="  ?  ", shape=rect];
+5 [class=intent, fillcolor=lightblue, label=hola, shape=rect, style=filled];
 0 -> "-1"  [class="", key=NONE, label=""];
 0 -> 1  [class=active, key=NONE, label=""];
-1 -> 7  [class=active, key=NONE, label=""];
-1 -> 8  [class="", key=0];
-1 -> 9  [class="", key=0];
+1 -> 4  [class=active, key=NONE, label=""];
+1 -> 5  [class="", key=0];
 2 -> "-3"  [class="", key=NONE, label=""];
-4 -> 5  [class="", key=NONE, label=""];
-5 -> "-4"  [class="", key=NONE, label=""];
-8 -> 2  [class="", key=0];
-9 -> 4  [class="", key=0];
+5 -> 2  [class="", key=0];
 }

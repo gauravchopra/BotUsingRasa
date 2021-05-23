@@ -631,3 +631,51 @@ stories:
   - intent: thankyou
   - action: utter_noworries
   - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+  - action: utter_ask_location
+  - intent: restaurant_search
+    entities:
+    - location: pune
+  - slot_was_set:
+    - location: pune
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: North Indian
+  - slot_was_set:
+    - cuisine: North Indian
+  - action: utter_ask_budget_for_two
+  - intent: restaurant_search
+    entities:
+    - budgetmin: '300'
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmax: '700'
+  - slot_was_set:
+    - budgetmin: '300'
+  - action: action_validate_budget
+  - action: action_search_restaurants
+  - slot_was_set:
+    - location: pune
+  - slot_was_set:
+    - restaurant_exist: false
+  - action: utter_ask_needemail
+  - intent: affirm
+  - action: utter_ask_email
+  - intent: send_email
+    entities:
+    - email: gaurav@rbs.com
+  - slot_was_set:
+    - email: gaurav@rbs.com
+  - action: action_validate_email
+  - slot_was_set:
+    - email_ok: true
+  - action: action_send_mail
+  - intent: thankyou
+  - action: utter_noworries
+  - action: action_restart
