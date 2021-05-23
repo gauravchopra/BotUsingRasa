@@ -265,8 +265,13 @@ nlu:
     - hey, i need a resturant in [Pune](location)
     - hey need a place in [dilli]{"entity": "location", "value": "Delhi"}
     - I m hungry.Looking out for some good restaurants
-    - [pune](location)
+    - can you sugegst some good restaurants in [Rishikesh](location)
+    - okay. show me some in [Allahabad](location)
+    - okay. show me some good restaurants in [Delhi](location)
+    - show me some good resturants in [agra](location)
     - [North Indian](cuisine)
+    - can you suggest me some good resturants in [rishikesh](location)
+    - okay. in [Mumbai](location)
 - intent: help
   examples: |
     - help
@@ -1020,6 +1025,8 @@ nlu:
     - this is my email address [abc_123@abc.com.edu](email) send me an email.
     - yes please send it on [mayank.sharma@rbs.com](email)
     - [gaurav@rbs.com](email)
+    - [gaurav.chopra13@gmail.com](email)
+    - [mayankmkl@gmail.com](email)
 - intent: budget
   examples: |
     - [>700]{"entity": "budgetmin", "value": "700"}

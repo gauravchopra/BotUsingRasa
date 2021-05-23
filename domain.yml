@@ -3,13 +3,14 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- affirm
+- handleinsult
 - thankyou
+- greet
 - restaurant_search
 - send_email
-- greet
-- affirm
-- deny
 - goodbye
+- deny
 - help
 - out_of_scope
 - stop
@@ -23,7 +24,6 @@ intents:
 - ask_time
 - ask_wherefrom
 - ask_whoami
-- handleinsult
 - telljoke
 - ask_whatismyname
 - ask_languagesbot

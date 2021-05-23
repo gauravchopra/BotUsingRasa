@@ -56,6 +56,8 @@ class ActionSearchRestaurants(Action):
 
     def run(self, dispatcher, tracker, domain):
         loc = tracker.get_slot('location')
+        print("Location is::" + loc)
+        print("is valid Location:" + str(validate_location(loc)))
         if not (validate_location(loc)):
             dispatcher.utter_message("Sorry, we do not operate in " + loc + " yet. Please try some other city.")
             return []
@@ -194,7 +196,8 @@ class ActionValidateLocation(Action):
 
     def run(self, dispatcher, tracker, domain):
         loc = tracker.get_slot('location')
-
+        print("Location is::"+loc)
+        print("is valid Location:" + str(validate_location(loc)))
         if not (validate_location(loc)):
             dispatcher.utter_message("Sorry, we do not operate in " + loc + " yet. Please try some other city.")
             return [SlotSet('location', None), SlotSet("location_ok", False)]
